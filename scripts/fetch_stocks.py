@@ -14,12 +14,25 @@ WATCHLIST = [
     {"code": "1476.TW", "name": "儒鴻企業", "sector": "消費"},
 ]
 
-# 買進觸發條件（可以自己調整）
+# 買進觸發條件
 ALERT_RULES = {
-    "pe_below_avg":   True,   # P/E 低於歷史均值
+    "pe_below_avg":   True,
     "yield_above":    4.0,    # 殖利率超過這個%數
     "roe_above":      15.0,   # ROE 超過這個%數
 }
+
+def normalize_yield(raw_yield):
+    """
+    yfinance 台股殖利率有時回傳小數（0.018 = 1.8%），
+    有時回傳已是百分比（1.06 = 1.06%）。
+    正常殖利率不會超過 30%，超過 0.3 代表已是百分比格式。
+    """
+    if raw_yield is None:
+        return 0.0
+    if raw_yield > 0.3:
+        return round(raw_yield, 2)      # 已經是 % 格式，直接用
+    else:
+        return round(raw_yield * 100, 2)  # 小數格式，乘 100
 
 def score_stock(info):
     """四層指標評分，回傳 0–4 分"""
@@ -28,21 +41,22 @@ def score_stock(info):
 
     # 第一層：體質
     debt_ratio = info.get("debtToEquity", 999)
-    if debt_ratio < 100:  # yfinance 的 debtToEquity 是 D/E，換算約等於負債比 < 50%
+    if debt_ratio < 100:
         score += 1
         reasons.append("負債比合理")
 
     # 第二層：獲利
-    roe = info.get("returnOnEquity", 0)
-    if roe and roe * 100 >= ALERT_RULES["roe_above"]:
+    roe = (info.get("returnOnEquity") or 0) * 100
+    if roe >= ALERT_RULES["roe_above"]:
         score += 1
-        reasons.append(f"ROE {roe*100:.1f}%")
+        reasons.append(f"ROE {roe:.1f}%")
 
     # 第三層：股利
-    div_yield = info.get("dividendYield", 0)
-    if div_yield and div_yield * 100 >= ALERT_RULES["yield_above"]:
+    raw_yield = info.get("dividendYield") or 0
+    div_yield_pct = normalize_yield(raw_yield)
+    if div_yield_pct >= ALERT_RULES["yield_above"]:
         score += 1
-        reasons.append(f"殖利率 {div_yield*100:.1f}%")
+        reasons.append(f"殖利率 {div_yield_pct:.1f}%")
 
     # 第四層：估值
     pe = info.get("trailingPE", 999)
@@ -56,13 +70,13 @@ def score_stock(info):
 def check_alert(info, score):
     """判斷是否觸發買進通知"""
     alerts = []
-    pe = info.get("trailingPE", 999)
-    div_yield = (info.get("dividendYield") or 0) * 100
+    raw_yield = info.get("dividendYield") or 0
+    div_yield_pct = normalize_yield(raw_yield)
 
     if score >= 3:
         alerts.append(f"四層指標通過 {score}/4 層")
-    if div_yield >= ALERT_RULES["yield_above"]:
-        alerts.append(f"殖利率 {div_yield:.1f}% 達標")
+    if div_yield_pct >= ALERT_RULES["yield_above"]:
+        alerts.append(f"殖利率 {div_yield_pct:.1f}% 達標")
 
     return alerts
 
@@ -79,27 +93,27 @@ def fetch_all():
             pe = info.get("trailingPE")
             pb = info.get("priceToBook")
             roe = (info.get("returnOnEquity") or 0) * 100
-            div_yield = (info.get("dividendYield") or 0) * 100
+            raw_yield = info.get("dividendYield") or 0
+            div_yield = normalize_yield(raw_yield)
             eps = info.get("trailingEps")
-            market_cap = info.get("marketCap", 0)
 
             score, reasons = score_stock(info)
             alerts = check_alert(info, score)
 
             results.append({
-                "code":       stock["code"].replace(".TW", ""),
-                "name":       stock["name"],
-                "sector":     stock["sector"],
-                "price":      round(price, 1) if price else None,
-                "pe":         round(pe, 1) if pe else None,
-                "pb":         round(pb, 2) if pb else None,
-                "roe":        round(roe, 1) if roe else None,
-                "div_yield":  round(div_yield, 2) if div_yield else None,
-                "eps":        round(eps, 2) if eps else None,
-                "score":      score,
-                "reasons":    reasons,
-                "alerts":     alerts,
-                "has_alert":  len(alerts) > 0,
+                "code":      stock["code"].replace(".TW", ""),
+                "name":      stock["name"],
+                "sector":    stock["sector"],
+                "price":     round(price, 1) if price else None,
+                "pe":        round(pe, 1) if pe else None,
+                "pb":        round(pb, 2) if pb else None,
+                "roe":       round(roe, 1) if roe else None,
+                "div_yield": div_yield,
+                "eps":       round(eps, 2) if eps else None,
+                "score":     score,
+                "reasons":   reasons,
+                "alerts":    alerts,
+                "has_alert": len(alerts) > 0,
             })
 
         except Exception as e:
@@ -133,10 +147,8 @@ def main():
     print("開始抓取股票資料...")
     stocks = fetch_all()
 
-    # 整理有買進訊號的股票
     alert_stocks = [s for s in stocks if s.get("has_alert")]
 
-    # 存成 JSON
     output = {
         "last_updated": datetime.now().strftime("%Y-%m-%d %H:%M"),
         "stocks": stocks,
@@ -148,7 +160,6 @@ def main():
 
     print(f"完成，共 {len(stocks)} 檔，{len(alert_stocks)} 檔有訊號")
 
-    # 發 LINE 通知
     if alert_stocks:
         msg = "\n📊 股票監控每日更新\n"
         for s in alert_stocks:
