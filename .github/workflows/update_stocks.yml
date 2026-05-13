@@ -1,0 +1,41 @@
+name: 每日自動更新股票數據
+
+on:
+  schedule:
+    # 台灣時間每天下午 6:30（UTC 10:30，台股收盤後）
+    - cron: '30 10 * * 1-5'
+  workflow_dispatch:
+    # 讓你可以手動在 GitHub 網頁上點按鈕執行，方便測試
+
+jobs:
+  update-stock-data:
+    runs-on: ubuntu-latest  # 使用 GitHub 提供的免費 Linux 環境
+
+    steps:
+      # 第一步：把你的 repo 程式碼下載到執行環境
+      - name: 下載 repo 程式碼
+        uses: actions/checkout@v4
+
+      # 第二步：安裝 Python
+      - name: 安裝 Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # 第三步：安裝你的 Python 套件（yfinance 等）
+      - name: 安裝必要套件
+        run: |
+          pip install yfinance requests
+
+      # 第四步：執行你的抓取腳本
+      - name: 執行 fetch_stocks.py
+        run: python scripts/fetch_stocks.py
+
+      # 第五步：把更新後的 data/stocks.json 推回 repo
+      - name: 把更新的數據存回 repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/stocks.json
+          git diff --staged --quiet || git commit -m "自動更新：$(date '+%Y-%m-%d %H:%M') 股票數據"
+          git push
