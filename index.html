@@ -31,6 +31,39 @@
     .yield-good { color: #27ae60; font-weight: 600; }
     .yield-low { color: #aaa; }
     .loading { text-align: center; padding: 60px; color: #888; }
+
+    /* 說明面板 */
+    .guide { margin: 0 32px 32px; }
+    .guide-toggle { background: #1a1a2e; color: white; border: none; padding: 14px 24px; border-radius: 12px 12px 0 0; font-size: 0.95rem; cursor: pointer; width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; }
+    .guide-toggle:hover { background: #2d2d4e; }
+    .guide-body { background: white; border-radius: 0 0 12px 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); padding: 28px; display: none; }
+    .guide-body.open { display: block; }
+    .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 24px; }
+    .guide-section h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 2px solid #f0f0f0; }
+    .guide-section h3 .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; margin-right: 6px; }
+    .tag-0 { background: #fff3cd; color: #856404; }
+    .tag-1 { background: #d1ecf1; color: #0c5460; }
+    .tag-2 { background: #d4edda; color: #155724; }
+    .tag-3 { background: #cce5ff; color: #004085; }
+    .tag-4 { background: #f8d7da; color: #721c24; }
+    .guide-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 7px 0; border-bottom: 1px solid #f8f8f8; font-size: 0.875rem; gap: 12px; }
+    .guide-row:last-child { border-bottom: none; }
+    .guide-row .metric { font-weight: 600; min-width: 90px; }
+    .guide-row .pass { color: #27ae60; }
+    .guide-row .warn { color: #e74c3c; }
+    .guide-row .desc { color: #666; font-size: 0.82rem; flex: 1; text-align: right; }
+    .score-legend { background: #f8f9fa; border-radius: 8px; padding: 16px; margin-top: 16px; }
+    .score-legend h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; color: #555; }
+    .score-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; font-size: 0.85rem; }
+    .score-row:last-child { margin-bottom: 0; }
+    .dots-demo { display: flex; gap: 3px; }
+    .dot-demo { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-on { background: #2ecc71; }
+    .dot-off { background: #ddd; }
+    .trap-list { list-style: none; }
+    .trap-list li { padding: 6px 0; border-bottom: 1px solid #f8f8f8; font-size: 0.875rem; color: #555; }
+    .trap-list li:last-child { border-bottom: none; }
+    .trap-list li::before { content: "⚠️ "; }
   </style>
 </head>
 <body>
@@ -79,8 +112,172 @@
   </tbody>
 </table>
 
+<!-- 說明面板 -->
+<div class="guide">
+  <button class="guide-toggle" onclick="toggleGuide()">
+    <span>📖 指標說明手冊 — 怎麼閱讀這個 Dashboard？</span>
+    <span id="arrow">▼</span>
+  </button>
+  <div class="guide-body" id="guide-body">
+
+    <div class="guide-grid">
+
+      <!-- 第零層 -->
+      <div class="guide-section">
+        <h3><span class="tag tag-0">第零層（最重要）</span>護城河質地</h3>
+        <div class="guide-row">
+          <span class="metric">核心問題</span>
+          <span class="desc">「競爭者進不來，或進來了也搶不走？」</span>
+        </div>
+        <div class="guide-row">
+          <span class="metric pass">最耐久</span>
+          <span class="desc">法規牌照、通路密度、技術代差 > 5 年</span>
+        </div>
+        <div class="guide-row">
+          <span class="metric" style="color:#f39c12">次之</span>
+          <span class="desc">品牌、客戶轉換成本、網路效應</span>
+        </div>
+        <div class="guide-row">
+          <span class="metric warn">最脆弱</span>
+          <span class="desc">單純技術領先（可被追趕）、景氣循環漲價</span>
+        </div>
+      </div>
+
+      <!-- 第一層 -->
+      <div class="guide-section">
+        <h3><span class="tag tag-1">第一層</span>公司體質</h3>
+        <div class="guide-row">
+          <span class="metric">負債比率</span>
+          <span class="pass">達標 &lt; 40%</span>
+          <span class="desc warn">警示 &gt; 60%</span>
+        </div>
+        <div class="guide-row">
+          <span class="metric">流動比率</span>
+          <span class="pass">達標 &gt; 150%</span>
+          <span class="desc warn">警示 &lt; 100%</span>
+        </div>
+        <div class="guide-row">
+          <span class="metric">自由現金流</span>
+          <span class="pass">連續 3 年為正</span>
+          <span class="desc warn">負值卻大量配息 ❌</span>
+        </div>
+      </div>
+
+      <!-- 第二層 -->
+      <div class="guide-section">
+        <h3><span class="tag tag-2">第二層</span>獲利能力</h3>
+        <div class="guide-row">
+          <span class="metric">ROE</span>
+          <span class="pass">連續 5 年 &gt; 15%</span>
+          <span class="desc warn">警示 &lt; 8% 或大幅波動</span>
+        </div>
+        <div class="guide-row">
+          <span class="metric">EPS 趨勢</span>
+          <span class="pass">年均成長 5–10%</span>
+          <span class="desc warn">連續衰退或景氣循環型</span>
+        </div>
+        <div class="guide-row">
+          <span class="metric">毛利率</span>
+          <span class="pass">穩定或上升</span>
+          <span class="desc warn">連續 3 年下滑 ❌</span>
+        </div>
+      </div>
+
+      <!-- 第三層 -->
+      <div class="guide-section">
+        <h3><span class="tag tag-3">第三層</span>股利品質</h3>
+        <div class="guide-row">
+          <span class="metric">配息年數</span>
+          <span class="pass">10 年以上不中斷</span>
+          <span class="desc warn">曾中斷或大幅縮減 ❌</span>
+        </div>
+        <div class="guide-row">
+          <span class="metric">發放率</span>
+          <span class="pass">40–70%</span>
+          <span class="desc warn">&gt; 100% 代表借錢配息 ❌</span>
+        </div>
+        <div class="guide-row">
+          <span class="metric">現金殖利率</span>
+          <span class="pass">3–6%（台股）</span>
+          <span class="desc warn">高殖利率來自股價下跌？先查原因</span>
+        </div>
+      </div>
+
+      <!-- 第四層 -->
+      <div class="guide-section">
+        <h3><span class="tag tag-4">第四層</span>估值評估</h3>
+        <div class="guide-row">
+          <span class="metric">P/E</span>
+          <span class="pass">接近或低於歷史均值</span>
+          <span class="desc warn">遠超同業且無特殊原因 ❌</span>
+        </div>
+        <div class="guide-row">
+          <span class="metric">P/B</span>
+          <span class="pass">低於歷史均值</span>
+          <span class="desc warn">輕資產業例外</span>
+        </div>
+        <div class="guide-row">
+          <span class="metric">遠期 P/E</span>
+          <span class="pass">低於當前 P/E</span>
+          <span class="desc">代表市場預期獲利成長</span>
+        </div>
+      </div>
+
+      <!-- 常見陷阱 -->
+      <div class="guide-section">
+        <h3>🚨 常見陷阱，遇到要特別小心</h3>
+        <ul class="trap-list">
+          <li>景氣循環股（記憶體、面板、航運）— 高峰時指標最漂亮，但不是護城河</li>
+          <li>殖利率陷阱 — 殖利率突然變高，先查是獲利增加還是股價下跌</li>
+          <li>借錢配息 — 配息率 > 100% 是財務壓力警訊</li>
+          <li>技術型護城河 — 可被追趕，大立光就是例子</li>
+          <li>類債券股（如中華電信）— 穩定配息但市值幾乎不成長</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- 評分說明 -->
+    <div class="score-legend">
+      <h4>四層綠點評分怎麼看？</h4>
+      <div class="score-row">
+        <div class="dots-demo">
+          <div class="dot-demo dot-on"></div><div class="dot-demo dot-on"></div><div class="dot-demo dot-on"></div><div class="dot-demo dot-on"></div>
+        </div>
+        <span>4/4 層通過 — 財務面全數達標，值得深入研究護城河</span>
+      </div>
+      <div class="score-row">
+        <div class="dots-demo">
+          <div class="dot-demo dot-on"></div><div class="dot-demo dot-on"></div><div class="dot-demo dot-on"></div><div class="dot-demo dot-off"></div>
+        </div>
+        <span>3/4 層通過 — 有訊號，確認哪一層未達標再判斷</span>
+      </div>
+      <div class="score-row">
+        <div class="dots-demo">
+          <div class="dot-demo dot-on"></div><div class="dot-demo dot-on"></div><div class="dot-demo dot-off"></div><div class="dot-demo dot-off"></div>
+        </div>
+        <span>2/4 層通過 — 觀察中，尚未達到買進條件</span>
+      </div>
+      <div class="score-row">
+        <div class="dots-demo">
+          <div class="dot-demo dot-on"></div><div class="dot-demo dot-off"></div><div class="dot-demo dot-off"></div><div class="dot-demo dot-off"></div>
+        </div>
+        <span>1/4 層以下 — 暫不考慮，等財務改善再觀察</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <script>
   const DATA_URL = "https://raw.githubusercontent.com/hawen1015/stock-dashboard/main/data/stocks.json";
+
+  function toggleGuide() {
+    const body = document.getElementById("guide-body");
+    const arrow = document.getElementById("arrow");
+    body.classList.toggle("open");
+    arrow.textContent = body.classList.contains("open") ? "▲" : "▼";
+  }
 
   async function loadData() {
     try {
