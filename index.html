@@ -16,7 +16,7 @@
     .card .value { font-size: 1.8rem; font-weight: 700; }
     .card.alert .value { color: #e74c3c; }
     .table-wrap { width: calc(100% - 64px); margin: 0 32px 32px; overflow-x: auto; }
-    table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.08); min-width: 900px; }
+    table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.08); min-width: 960px; }
     th { background: #1a1a2e; color: white; padding: 12px 16px; text-align: left; font-size: 0.82rem; font-weight: 500; white-space: nowrap; }
     td { padding: 12px 16px; border-bottom: 1px solid #f0f0f0; font-size: 0.88rem; vertical-align: middle; }
     tr:last-child td { border-bottom: none; }
@@ -41,6 +41,25 @@
     .roe-bar { width: 8px; border-radius: 2px 2px 0 0; background: #2ecc71; min-height: 3px; }
     .roe-bar.low { background: #e74c3c; }
     .roe-bar.mid { background: #f39c12; }
+
+    /* 複製按鈕 */
+    .btn-prompt {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: #1a1a2e; color: white; border: none;
+      padding: 5px 10px; border-radius: 6px; font-size: 0.75rem;
+      cursor: pointer; white-space: nowrap; transition: background 0.2s;
+    }
+    .btn-prompt:hover { background: #2d2d4e; }
+    .btn-prompt.copied { background: #27ae60; }
+
+    /* Toast 提示 */
+    .toast {
+      position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%);
+      background: #1a1a2e; color: white; padding: 12px 24px;
+      border-radius: 8px; font-size: 0.9rem; opacity: 0;
+      transition: opacity 0.3s; pointer-events: none; z-index: 999;
+    }
+    .toast.show { opacity: 1; }
 
     /* 說明面板 */
     .guide { margin: 0 32px 32px; }
@@ -74,6 +93,13 @@
     .trap-list li { padding: 6px 0; border-bottom: 1px solid #f8f8f8; font-size: 0.875rem; color: #555; }
     .trap-list li:last-child { border-bottom: none; }
     .trap-list li::before { content: "⚠️ "; }
+
+    /* 使用說明區塊 */
+    .how-to { margin: 0 32px 24px; background: #eef6ff; border-radius: 12px; padding: 20px 24px; border-left: 4px solid #2980b9; }
+    .how-to h3 { font-size: 0.95rem; font-weight: 700; color: #2980b9; margin-bottom: 10px; }
+    .how-to ol { padding-left: 20px; }
+    .how-to li { font-size: 0.875rem; color: #444; padding: 4px 0; line-height: 1.6; }
+    .how-to li strong { color: #1a1a2e; }
   </style>
 </head>
 <body>
@@ -102,6 +128,17 @@
   </div>
 </div>
 
+<!-- 使用說明 -->
+<div class="how-to">
+  <h3>🔔 看到「有訊號」之後，怎麼做？</h3>
+  <ol>
+    <li>點擊該股票列的 <strong>「📋 複製 AI 分析提示」</strong> 按鈕</li>
+    <li>開啟任意 AI 對話（Claude、ChatGPT 皆可），將複製的內容貼上送出</li>
+    <li>AI 會引導你回答 <strong>五個進場評估問題</strong>，幫助你判斷現在是否適合進場</li>
+    <li>所有分析僅供教育參考，<strong>最終決策由你自己判斷</strong></li>
+  </ol>
+</div>
+
 <div class="table-wrap">
 <table id="stock-table">
   <thead>
@@ -119,10 +156,11 @@
       <th>P/B</th>
       <th>四層評分</th>
       <th>狀態</th>
+      <th>進場評估</th>
     </tr>
   </thead>
   <tbody id="tbody">
-    <tr><td colspan="13" class="loading">載入資料中...</td></tr>
+    <tr><td colspan="14" class="loading">載入資料中...</td></tr>
   </tbody>
 </table>
 </div>
@@ -187,6 +225,9 @@
   </div>
 </div>
 
+<!-- Toast 提示 -->
+<div class="toast" id="toast">✅ 已複製！請貼到 AI 對話框開始分析</div>
+
 <script>
   const DATA_URL = "https://raw.githubusercontent.com/hawen1015/stock-dashboard/main/data/stocks.json";
 
@@ -216,10 +257,90 @@
     return "";
   }
 
+  function showToast(msg) {
+    const toast = document.getElementById("toast");
+    toast.textContent = msg;
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 3000);
+  }
+
+  function buildPrompt(s) {
+    const roeHistoryStr = s.roe_history
+      ? s.roe_history.join(" → ")
+      : "資料不足";
+
+    const peLink = `https://goodinfo.tw/tw/ShowK_ChartFlow.asp?RPT_CAT=PER&STOCK_ID=${s.code}`;
+
+    return `我正在評估是否進場買入「${s.name}（${s.code}）」，請你扮演我的投資分析助理，用繁體中文，依序引導我回答以下五個問題。每次只問一個問題，等我回答後再繼續下一題。
+
+【股票基本資料】
+- 現在股價：${s.price ? s.price.toLocaleString() : "—"} 元
+- 本益比（P/E）：${s.pe ? s.pe + "x" : "—"}
+- 股價淨值比（P/B）：${s.pb ?? "—"}
+- ROE（近期）：${s.roe ? s.roe + "%" : "—"}
+- ROE 歷史（由近到遠）：${roeHistoryStr}
+- 現金殖利率：${s.div_yield ? s.div_yield + "%" : "—"}
+- 連續配息年數：${s.div_years ? s.div_years + " 年" : "—"}
+- 股利發放率：${s.payout_ratio ? s.payout_ratio + "%" : "—"}
+- EPS：${s.eps ?? "—"} 元
+- 四層財務評分：${s.score}/4
+
+【五個進場評估問題】
+
+第一題（估值）：
+請引導我前往以下連結查看本益比河流圖：${peLink}
+問我：「看完河流圖後，現在的 P/E ${s.pe ? s.pe + "x" : ""} 跟過去歷史相比，你覺得是偏貴、合理還是偏便宜？」
+
+第二題（護城河）：
+問我：「你能用自己的話說明，${s.name} 靠什麼讓競爭者很難搶走它的客戶或市場地位？」
+如果我說不出來，請提醒我：說不清楚護城河是很重要的警訊，建議先研究清楚再考慮買進。
+
+第三題（景氣循環確認）：
+根據 ROE 歷史數據 ${roeHistoryStr}，問我：「這幾年的 ROE 走勢，你覺得這是穩定型、成長型，還是景氣循環型公司？為什麼？」
+
+第四題（風險承受）：
+問我：「如果買進後股價短期下跌 20–30%，你能接受放著不動、等待 3 年以上嗎？」
+
+第五題（資金配置）：
+問我：「你打算投入多少資金買這檔股票？這佔你目前總投資資金的比例大約是多少？」
+如果比例超過 30%，請提醒我單一個股不宜集中過高。
+
+【完成後請做以下事情】
+全部五題回答完後，請幫我整理一份簡短總結：
+1. 我的回答顯示哪些地方思考清楚了，哪些地方還需要再研究
+2. 給出三擇一的結論：「建議進場」、「建議再觀察」或「建議暫緩」
+3. 說明你建議這個結論的主要原因（2–3 點）
+
+最後請提醒我：以上分析僅供教育參考，不構成投資建議，最終決策由我自己負責判斷。`;
+  }
+
+  function copyPrompt(code, btn) {
+    // 從已載入的資料找到這檔股票
+    const s = window.stockData && window.stockData.find(x => x.code === code);
+    if (!s) {
+      showToast("⚠️ 資料尚未載入，請稍後再試");
+      return;
+    }
+    const prompt = buildPrompt(s);
+    navigator.clipboard.writeText(prompt).then(() => {
+      btn.textContent = "✅ 已複製";
+      btn.classList.add("copied");
+      setTimeout(() => {
+        btn.textContent = "📋 複製 AI 分析提示";
+        btn.classList.remove("copied");
+      }, 2500);
+      showToast("✅ 已複製！請貼到任意 AI 對話框開始分析");
+    }).catch(() => {
+      showToast("⚠️ 複製失敗，請手動複製");
+    });
+  }
+
   async function loadData() {
     try {
       const res = await fetch(DATA_URL + "?t=" + Date.now());
       const data = await res.json();
+
+      window.stockData = data.stocks; // 存到全域供複製按鈕使用
 
       document.getElementById("updated").textContent = "最後更新：" + data.last_updated;
       document.getElementById("total").textContent = data.stocks.length;
@@ -245,6 +366,11 @@
         const warningHtml = s.warnings && s.warnings.length > 0
           ? s.warnings.map(w => `<span class="warning-tag">${w}</span>`).join("") : "";
 
+        // 有訊號才顯示複製按鈕，觀察中的不顯示
+        const promptBtn = s.has_alert
+          ? `<button class="btn-prompt" onclick="copyPrompt('${s.code}', this)">📋 複製 AI 分析提示</button>`
+          : `<span style="color:#bbb;font-size:0.8rem">尚無訊號</span>`;
+
         tbody.innerHTML += `
           <tr class="${rowClass}">
             <td><strong>${s.name}</strong><br><small style="color:#aaa">${s.code}</small></td>
@@ -260,12 +386,13 @@
             <td>${s.pb ? s.pb : "—"}</td>
             <td><div class="score">${dots}</div></td>
             <td>${s.has_alert ? "🔔 有訊號" : "⏳ 觀察中"}</td>
+            <td>${promptBtn}</td>
           </tr>`;
       });
 
     } catch(e) {
       document.getElementById("tbody").innerHTML =
-        '<tr><td colspan="13" class="loading">⚠️ 資料載入失敗</td></tr>';
+        '<tr><td colspan="14" class="loading">⚠️ 資料載入失敗</td></tr>';
     }
   }
 
