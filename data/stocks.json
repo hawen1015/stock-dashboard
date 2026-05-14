@@ -1,129 +1,187 @@
 {
-  "last_updated": "2026-05-13 16:51",
+  "last_updated": "2026-05-14 03:48",
   "stocks": [
     {
       "code": "2330",
       "name": "台積電",
       "sector": "科技",
-      "price": 2220.0,
-      "pe": 30.2,
-      "pb": 9.77,
+      "price": 2240.0,
+      "pe": 30.4,
+      "pb": 9.86,
       "roe": 36.2,
-      "div_yield": 1.06,
-      "eps": 73.51,
+      "roe_history": [
+        31.7,
+        27.3,
+        24.8,
+        34.2,
+        NaN
+      ],
+      "div_yield": 1.08,
+      "div_years": 23,
+      "payout_ratio": 27.9,
+      "eps": 73.7,
       "score": 3,
       "reasons": [
         "負債比合理",
-        "ROE 36.2%",
+        "ROE 31.7%（歷史有波動）",
         "遠期P/E優於現在"
       ],
       "alerts": [
         "四層指標通過 3/4 層"
       ],
+      "warnings": [],
       "has_alert": true
     },
     {
       "code": "2059",
       "name": "川湖科技",
       "sector": "科技",
-      "price": 5250.0,
-      "pe": 52.1,
-      "pb": 15.87,
+      "price": 5080.0,
+      "pe": 50.4,
+      "pb": 15.35,
       "roe": 39.1,
-      "div_yield": 0.59,
-      "eps": 100.73,
+      "roe_history": [
+        35.1,
+        28.9,
+        16.5,
+        25.9,
+        NaN
+      ],
+      "div_yield": 0.61,
+      "div_years": 18,
+      "payout_ratio": 32.0,
+      "eps": 100.8,
       "score": 3,
       "reasons": [
         "負債比合理",
-        "ROE 39.1%",
+        "ROE 35.1%（歷史有波動）",
         "遠期P/E優於現在"
       ],
       "alerts": [
         "四層指標通過 3/4 層"
       ],
+      "warnings": [],
       "has_alert": true
     },
     {
       "code": "2891",
       "name": "中信金",
       "sector": "金融",
-      "price": 54.9,
-      "pe": 13.5,
-      "pb": 2.21,
+      "price": 55.1,
+      "pe": 13.6,
+      "pb": 2.22,
       "roe": 15.5,
-      "div_yield": 4.3,
+      "roe_history": [
+        15.6,
+        14.9,
+        12.7,
+        8.5
+      ],
+      "div_yield": 4.19,
+      "div_years": 18,
+      "payout_ratio": 56.7,
       "eps": 4.06,
       "score": 3,
       "reasons": [
-        "ROE 15.5%",
-        "殖利率 4.3%",
+        "ROE 15.6%（歷史有波動）",
+        "殖利率 4.2%（配息 18 年）",
         "遠期P/E優於現在"
       ],
       "alerts": [
         "四層指標通過 3/4 層",
-        "殖利率 4.3% 達標"
+        "殖利率 4.2% 達標"
       ],
+      "warnings": [],
       "has_alert": true
     },
     {
       "code": "2886",
       "name": "兆豐金",
       "sector": "金融",
-      "price": 39.5,
-      "pe": 16.8,
-      "pb": 1.5,
+      "price": 39.4,
+      "pe": 16.7,
+      "pb": 1.49,
       "roe": 9.3,
-      "div_yield": 4.08,
+      "roe_history": [
+        8.9,
+        9.5,
+        9.9,
+        6.1,
+        NaN
+      ],
+      "div_yield": 4.05,
+      "div_years": 23,
+      "payout_ratio": 67.8,
       "eps": 2.36,
       "score": 2,
       "reasons": [
-        "殖利率 4.1%",
+        "殖利率 4.0%（配息 23 年）",
         "遠期P/E優於現在"
       ],
       "alerts": [
-        "殖利率 4.1% 達標"
+        "殖利率 4.0% 達標"
       ],
+      "warnings": [],
       "has_alert": true
     },
     {
       "code": "2912",
       "name": "統一超商",
       "sector": "消費",
-      "price": 225.5,
-      "pe": 21.0,
-      "pb": 5.04,
+      "price": 226.5,
+      "pe": 21.1,
+      "pb": 5.07,
       "roe": 23.9,
-      "div_yield": 3.98,
+      "roe_history": [
+        26.3,
+        27.3,
+        28.0,
+        25.5
+      ],
+      "div_yield": 3.99,
+      "div_years": 26,
+      "payout_ratio": 83.7,
       "eps": 10.76,
       "score": 2,
       "reasons": [
-        "ROE 23.9%",
+        "ROE 連續達標（近期 26.3%）",
         "遠期P/E優於現在"
       ],
       "alerts": [],
+      "warnings": [],
       "has_alert": false
     },
     {
       "code": "1476",
       "name": "儒鴻企業",
       "sector": "消費",
-      "price": 349.0,
-      "pe": 17.4,
-      "pb": 3.23,
+      "price": 342.5,
+      "pe": 17.0,
+      "pb": 3.17,
       "roe": 18.8,
+      "roe_history": [
+        18.6,
+        23.0,
+        20.2,
+        27.0,
+        NaN
+      ],
       "div_yield": 5.07,
-      "eps": 20.08,
+      "div_years": 25,
+      "payout_ratio": 84.6,
+      "eps": 20.1,
       "score": 4,
       "reasons": [
         "負債比合理",
-        "ROE 18.8%",
-        "殖利率 5.1%",
+        "ROE 18.6%（歷史有波動）",
+        "殖利率 5.1%（配息 25 年）",
         "遠期P/E優於現在"
       ],
       "alerts": [
         "四層指標通過 4/4 層",
         "殖利率 5.1% 達標"
       ],
+      "warnings": [],
       "has_alert": true
     }
   ],
