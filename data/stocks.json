@@ -1,13 +1,13 @@
 {
-  "last_updated": "2026-06-03 15:18",
+  "last_updated": "2026-06-04 13:41",
   "stocks": [
     {
       "code": "2330",
       "name": "台積電",
       "sector": "科技",
-      "price": 2425.0,
-      "pe": 33.0,
-      "pb": 10.68,
+      "price": 2385.0,
+      "pe": 32.4,
+      "pb": 10.5,
       "roe": 36.2,
       "roe_history": [
         31.7,
@@ -15,10 +15,10 @@
         24.8,
         34.2
       ],
-      "div_yield": 1.01,
+      "div_yield": 0.99,
       "div_years": 23,
       "payout_ratio": 27.9,
-      "eps": 73.54,
+      "eps": 73.72,
       "score": 3,
       "reasons": [
         "負債比合理",
@@ -45,10 +45,10 @@
         16.5,
         25.9
       ],
-      "div_yield": 0.63,
+      "div_yield": 0.6,
       "div_years": 18,
       "payout_ratio": 32.0,
-      "eps": 100.49,
+      "eps": 100.58,
       "score": 3,
       "reasons": [
         "負債比合理",
@@ -65,9 +65,9 @@
       "code": "2891",
       "name": "中信金",
       "sector": "金融",
-      "price": 70.5,
-      "pe": 17.4,
-      "pb": 2.6,
+      "price": 68.0,
+      "pe": 16.7,
+      "pb": 2.5,
       "roe": 17.1,
       "roe_history": [
         15.6,
@@ -75,30 +75,26 @@
         12.7,
         8.5
       ],
-      "div_yield": 3.59,
+      "div_yield": 3.26,
       "div_years": 18,
       "payout_ratio": 56.7,
       "eps": 4.06,
-      "score": 3,
+      "score": 2,
       "reasons": [
         "ROE 15.6%（歷史有波動）",
-        "殖利率 3.6%（配息 18 年）",
         "遠期P/E優於現在"
       ],
-      "alerts": [
-        "四層指標通過 3/4 層",
-        "殖利率 3.6% 達標"
-      ],
+      "alerts": [],
       "warnings": [],
-      "has_alert": true
+      "has_alert": false
     },
     {
       "code": "2886",
       "name": "兆豐金",
       "sector": "金融",
-      "price": 41.6,
-      "pe": 17.6,
-      "pb": 1.54,
+      "price": 42.1,
+      "pe": 17.8,
+      "pb": 1.55,
       "roe": 9.3,
       "roe_history": [
         8.9,
@@ -125,9 +121,9 @@
       "code": "2912",
       "name": "統一超商",
       "sector": "消費",
-      "price": 239.0,
-      "pe": 22.3,
-      "pb": 5.35,
+      "price": 246.0,
+      "pe": 22.9,
+      "pb": 5.5,
       "roe": 23.9,
       "roe_history": [
         26.3,
@@ -135,19 +131,19 @@
         28.0,
         25.5
       ],
-      "div_yield": 3.86,
+      "div_yield": 3.77,
       "div_years": 26,
       "payout_ratio": 83.7,
-      "eps": 10.74,
+      "eps": 10.75,
       "score": 3,
       "reasons": [
         "ROE 連續達標（近期 26.3%）",
-        "殖利率 3.9%（配息 26 年）",
+        "殖利率 3.8%（配息 26 年）",
         "遠期P/E優於現在"
       ],
       "alerts": [
         "四層指標通過 3/4 層",
-        "殖利率 3.9% 達標"
+        "殖利率 3.8% 達標"
       ],
       "warnings": [],
       "has_alert": true
@@ -156,9 +152,9 @@
       "code": "1476",
       "name": "儒鴻企業",
       "sector": "消費",
-      "price": 360.5,
-      "pe": 17.9,
-      "pb": 3.6,
+      "price": 363.5,
+      "pe": 18.1,
+      "pb": 3.63,
       "roe": 21.2,
       "roe_history": [
         18.6,
@@ -166,24 +162,24 @@
         20.2,
         27.0
       ],
-      "div_yield": 4.27,
+      "div_yield": 4.16,
       "div_years": 25,
       "payout_ratio": 84.6,
-      "eps": 20.11,
+      "eps": 20.08,
       "score": 4,
       "reasons": [
         "負債比合理",
         "ROE 連續達標（近期 18.6%）",
-        "殖利率 4.3%（配息 25 年）",
+        "殖利率 4.2%（配息 25 年）",
         "遠期P/E優於現在"
       ],
       "alerts": [
         "四層指標通過 4/4 層",
-        "殖利率 4.3% 達標"
+        "殖利率 4.2% 達標"
       ],
       "warnings": [],
       "has_alert": true
     }
   ],
-  "alert_count": 6
+  "alert_count": 5
 }
