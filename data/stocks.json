@@ -1,13 +1,13 @@
 {
-  "last_updated": "2026-06-15 16:08",
+  "last_updated": "2026-06-16 15:28",
   "stocks": [
     {
       "code": "2330",
       "name": "台積電",
       "sector": "科技",
-      "price": 2375.0,
-      "pe": 32.2,
-      "pb": 10.45,
+      "price": 2400.0,
+      "pe": 32.6,
+      "pb": 10.56,
       "roe": 36.2,
       "roe_history": [
         31.7,
@@ -15,10 +15,10 @@
         24.8,
         34.2
       ],
-      "div_yield": 1.04,
+      "div_yield": 1.01,
       "div_years": 23,
       "payout_ratio": 27.9,
-      "eps": 73.69,
+      "eps": 73.63,
       "score": 3,
       "reasons": [
         "負債比合理",
@@ -35,9 +35,9 @@
       "code": "2059",
       "name": "川湖科技",
       "sector": "科技",
-      "price": 6960.0,
-      "pe": 69.0,
-      "pb": 21.04,
+      "price": 6650.0,
+      "pe": 65.9,
+      "pb": 20.1,
       "roe": 39.1,
       "roe_history": [
         35.1,
@@ -45,10 +45,10 @@
         16.5,
         25.9
       ],
-      "div_yield": 0.47,
+      "div_yield": 0.46,
       "div_years": 18,
       "payout_ratio": 32.0,
-      "eps": 100.89,
+      "eps": 100.92,
       "score": 3,
       "reasons": [
         "負債比合理",
@@ -65,9 +65,9 @@
       "code": "2891",
       "name": "中信金",
       "sector": "金融",
-      "price": 70.1,
-      "pe": 17.3,
-      "pb": 2.58,
+      "price": 70.8,
+      "pe": 17.4,
+      "pb": 2.61,
       "roe": 17.1,
       "roe_history": [
         15.6,
@@ -75,7 +75,7 @@
         12.7,
         8.5
       ],
-      "div_yield": 3.4,
+      "div_yield": 3.28,
       "div_years": 18,
       "payout_ratio": 56.7,
       "eps": 4.06,
@@ -92,9 +92,9 @@
       "code": "2886",
       "name": "兆豐金",
       "sector": "金融",
-      "price": 44.0,
-      "pe": 18.6,
-      "pb": 1.62,
+      "price": 44.5,
+      "pe": 18.9,
+      "pb": 1.64,
       "roe": 9.3,
       "roe_history": [
         8.9,
@@ -102,17 +102,17 @@
         9.9,
         6.1
       ],
-      "div_yield": 3.69,
+      "div_yield": 3.64,
       "div_years": 23,
       "payout_ratio": 67.8,
       "eps": 2.36,
       "score": 2,
       "reasons": [
-        "殖利率 3.7%（配息 23 年）",
+        "殖利率 3.6%（配息 23 年）",
         "遠期P/E優於現在"
       ],
       "alerts": [
-        "殖利率 3.7% 達標"
+        "殖利率 3.6% 達標"
       ],
       "warnings": [],
       "has_alert": true
@@ -131,19 +131,19 @@
         28.0,
         25.5
       ],
-      "div_yield": 3.91,
+      "div_yield": 3.95,
       "div_years": 26,
       "payout_ratio": 83.7,
       "eps": 10.74,
       "score": 3,
       "reasons": [
         "ROE 連續達標（近期 26.3%）",
-        "殖利率 3.9%（配息 26 年）",
+        "殖利率 4.0%（配息 26 年）",
         "遠期P/E優於現在"
       ],
       "alerts": [
         "四層指標通過 3/4 層",
-        "殖利率 3.9% 達標"
+        "殖利率 4.0% 達標"
       ],
       "warnings": [],
       "has_alert": true
@@ -162,20 +162,20 @@
         20.2,
         27.0
       ],
-      "div_yield": 4.35,
+      "div_yield": 4.37,
       "div_years": 25,
       "payout_ratio": 84.6,
-      "eps": 20.08,
+      "eps": 20.09,
       "score": 4,
       "reasons": [
         "負債比合理",
         "ROE 連續達標（近期 18.6%）",
-        "殖利率 4.3%（配息 25 年）",
+        "殖利率 4.4%（配息 25 年）",
         "遠期P/E優於現在"
       ],
       "alerts": [
         "四層指標通過 4/4 層",
-        "殖利率 4.3% 達標"
+        "殖利率 4.4% 達標"
       ],
       "warnings": [],
       "has_alert": true
