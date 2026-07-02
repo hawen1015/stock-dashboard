@@ -1,13 +1,13 @@
 {
-  "last_updated": "2026-07-01 13:17",
+  "last_updated": "2026-07-02 12:29",
   "stocks": [
     {
       "code": "2330",
       "name": "台積電",
       "sector": "科技",
-      "price": 2505.0,
-      "pe": 34.1,
-      "pb": 11.03,
+      "price": 2465.0,
+      "pe": 33.5,
+      "pb": 10.85,
       "roe": 36.2,
       "roe_history": [
         31.7,
@@ -15,10 +15,10 @@
         24.8,
         34.2
       ],
-      "div_yield": 1.0,
+      "div_yield": 0.96,
       "div_years": 23,
       "payout_ratio": 27.9,
-      "eps": 73.51,
+      "eps": 73.65,
       "score": 3,
       "reasons": [
         "負債比合理",
@@ -35,9 +35,9 @@
       "code": "2059",
       "name": "川湖科技",
       "sector": "科技",
-      "price": 7655.0,
-      "pe": 75.9,
-      "pb": 23.14,
+      "price": 7880.0,
+      "pe": 78.0,
+      "pb": 23.82,
       "roe": 39.1,
       "roe_history": [
         35.1,
@@ -45,10 +45,10 @@
         16.5,
         25.9
       ],
-      "div_yield": 0.44,
+      "div_yield": 0.67,
       "div_years": 18,
       "payout_ratio": 32.0,
-      "eps": 100.83,
+      "eps": 101.05,
       "score": 3,
       "reasons": [
         "負債比合理",
@@ -65,9 +65,9 @@
       "code": "2891",
       "name": "中信金",
       "sector": "金融",
-      "price": 70.6,
-      "pe": 17.4,
-      "pb": 2.6,
+      "price": 69.9,
+      "pe": 17.2,
+      "pb": 2.57,
       "roe": 17.1,
       "roe_history": [
         15.6,
@@ -75,7 +75,7 @@
         12.7,
         8.5
       ],
-      "div_yield": 3.52,
+      "div_yield": 3.54,
       "div_years": 18,
       "payout_ratio": 56.7,
       "eps": 4.06,
@@ -96,8 +96,8 @@
       "code": "2886",
       "name": "兆豐金",
       "sector": "金融",
-      "price": 46.1,
-      "pe": 19.6,
+      "price": 46.0,
+      "pe": 19.5,
       "pb": 1.7,
       "roe": 9.3,
       "roe_history": [
@@ -122,9 +122,9 @@
       "code": "2912",
       "name": "統一超商",
       "sector": "消費",
-      "price": 223.5,
-      "pe": 20.8,
-      "pb": 5.0,
+      "price": 228.5,
+      "pe": 21.3,
+      "pb": 5.11,
       "roe": 23.9,
       "roe_history": [
         26.3,
@@ -132,7 +132,7 @@
         28.0,
         25.5
       ],
-      "div_yield": 4.04,
+      "div_yield": 4.03,
       "div_years": 26,
       "payout_ratio": 83.7,
       "eps": 10.75,
@@ -153,9 +153,9 @@
       "code": "1476",
       "name": "儒鴻企業",
       "sector": "消費",
-      "price": 311.5,
-      "pe": 15.5,
-      "pb": 3.11,
+      "price": 315.0,
+      "pe": 15.7,
+      "pb": 3.14,
       "roe": 21.2,
       "roe_history": [
         18.6,
@@ -163,7 +163,7 @@
         20.2,
         27.0
       ],
-      "div_yield": 4.8,
+      "div_yield": 4.82,
       "div_years": 26,
       "payout_ratio": 84.6,
       "eps": 20.09,
