@@ -1,13 +1,13 @@
 {
-  "last_updated": "2026-07-02 12:29",
+  "last_updated": "2026-07-03 12:27",
   "stocks": [
     {
       "code": "2330",
       "name": "台積電",
       "sector": "科技",
-      "price": 2465.0,
-      "pe": 33.5,
-      "pb": 10.85,
+      "price": 2445.0,
+      "pe": 33.2,
+      "pb": 10.76,
       "roe": 36.2,
       "roe_history": [
         31.7,
@@ -15,10 +15,10 @@
         24.8,
         34.2
       ],
-      "div_yield": 0.96,
+      "div_yield": 0.97,
       "div_years": 23,
       "payout_ratio": 27.9,
-      "eps": 73.65,
+      "eps": 73.7,
       "score": 3,
       "reasons": [
         "負債比合理",
@@ -35,9 +35,9 @@
       "code": "2059",
       "name": "川湖科技",
       "sector": "科技",
-      "price": 7880.0,
-      "pe": 78.0,
-      "pb": 23.82,
+      "price": 8000.0,
+      "pe": 79.3,
+      "pb": 24.18,
       "roe": 39.1,
       "roe_history": [
         35.1,
@@ -45,10 +45,10 @@
         16.5,
         25.9
       ],
-      "div_yield": 0.67,
+      "div_yield": 0.65,
       "div_years": 18,
       "payout_ratio": 32.0,
-      "eps": 101.05,
+      "eps": 100.86,
       "score": 3,
       "reasons": [
         "負債比合理",
@@ -65,9 +65,9 @@
       "code": "2891",
       "name": "中信金",
       "sector": "金融",
-      "price": 69.9,
-      "pe": 17.2,
-      "pb": 2.57,
+      "price": 70.6,
+      "pe": 17.4,
+      "pb": 2.6,
       "roe": 17.1,
       "roe_history": [
         15.6,
@@ -75,19 +75,19 @@
         12.7,
         8.5
       ],
-      "div_yield": 3.54,
+      "div_yield": 3.58,
       "div_years": 18,
       "payout_ratio": 56.7,
       "eps": 4.06,
       "score": 3,
       "reasons": [
         "ROE 15.6%（歷史有波動）",
-        "殖利率 3.5%（配息 18 年）",
+        "殖利率 3.6%（配息 18 年）",
         "遠期P/E優於現在"
       ],
       "alerts": [
         "四層指標通過 3/4 層",
-        "殖利率 3.5% 達標"
+        "殖利率 3.6% 達標"
       ],
       "warnings": [],
       "has_alert": true
@@ -96,9 +96,9 @@
       "code": "2886",
       "name": "兆豐金",
       "sector": "金融",
-      "price": 46.0,
-      "pe": 19.5,
-      "pb": 1.7,
+      "price": 45.5,
+      "pe": 19.3,
+      "pb": 1.68,
       "roe": 9.3,
       "roe_history": [
         8.9,
@@ -106,7 +106,7 @@
         9.9,
         6.1
       ],
-      "div_yield": 3.47,
+      "div_yield": 3.48,
       "div_years": 23,
       "payout_ratio": 67.8,
       "eps": 2.36,
@@ -122,9 +122,9 @@
       "code": "2912",
       "name": "統一超商",
       "sector": "消費",
-      "price": 228.5,
-      "pe": 21.3,
-      "pb": 5.11,
+      "price": 231.0,
+      "pe": 21.5,
+      "pb": 5.17,
       "roe": 23.9,
       "roe_history": [
         26.3,
@@ -132,19 +132,19 @@
         28.0,
         25.5
       ],
-      "div_yield": 4.03,
+      "div_yield": 3.94,
       "div_years": 26,
       "payout_ratio": 83.7,
-      "eps": 10.75,
+      "eps": 10.74,
       "score": 3,
       "reasons": [
         "ROE 連續達標（近期 26.3%）",
-        "殖利率 4.0%（配息 26 年）",
+        "殖利率 3.9%（配息 26 年）",
         "遠期P/E優於現在"
       ],
       "alerts": [
         "四層指標通過 3/4 層",
-        "殖利率 4.0% 達標"
+        "殖利率 3.9% 達標"
       ],
       "warnings": [],
       "has_alert": true
@@ -153,9 +153,9 @@
       "code": "1476",
       "name": "儒鴻企業",
       "sector": "消費",
-      "price": 315.0,
-      "pe": 15.7,
-      "pb": 3.14,
+      "price": 323.5,
+      "pe": 16.1,
+      "pb": 3.23,
       "roe": 21.2,
       "roe_history": [
         18.6,
@@ -163,10 +163,10 @@
         20.2,
         27.0
       ],
-      "div_yield": 4.82,
+      "div_yield": 4.76,
       "div_years": 26,
       "payout_ratio": 84.6,
-      "eps": 20.09,
+      "eps": 20.1,
       "score": 4,
       "reasons": [
         "負債比合理",
