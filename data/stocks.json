@@ -1,13 +1,13 @@
 {
-  "last_updated": "2026-08-03 13:25",
+  "last_updated": "2026-08-04 12:26",
   "stocks": [
     {
       "code": "2330",
       "name": "台積電",
       "sector": "科技",
-      "price": 2370.0,
-      "pe": 32.1,
-      "pb": 9.55,
+      "price": 2320.0,
+      "pe": 31.5,
+      "pb": 9.35,
       "roe": 40.0,
       "roe_history": [
         31.7,
@@ -15,10 +15,10 @@
         24.8,
         34.2
       ],
-      "div_yield": 0.99,
+      "div_yield": 1.01,
       "div_years": 23,
       "payout_ratio": 27.9,
-      "eps": 73.72,
+      "eps": 73.71,
       "score": 3,
       "reasons": [
         "負債比合理",
@@ -35,9 +35,9 @@
       "code": "2059",
       "name": "川湖科技",
       "sector": "科技",
-      "price": 8635.0,
-      "pe": 78.0,
-      "pb": 26.1,
+      "price": 9495.0,
+      "pe": 85.8,
+      "pb": 28.7,
       "roe": 39.1,
       "roe_history": [
         35.1,
@@ -96,9 +96,9 @@
       "code": "2886",
       "name": "兆豐金",
       "sector": "金融",
-      "price": 51.6,
-      "pe": 21.9,
-      "pb": 1.9,
+      "price": 50.7,
+      "pe": 21.5,
+      "pb": 1.87,
       "roe": 9.3,
       "roe_history": [
         8.9,
@@ -122,9 +122,9 @@
       "code": "2912",
       "name": "統一超商",
       "sector": "消費",
-      "price": 220.5,
-      "pe": 20.5,
-      "pb": 5.59,
+      "price": 221.5,
+      "pe": 20.6,
+      "pb": 5.62,
       "roe": 28.2,
       "roe_history": [
         26.3,
@@ -153,9 +153,9 @@
       "code": "1476",
       "name": "儒鴻企業",
       "sector": "消費",
-      "price": 346.5,
-      "pe": 16.8,
-      "pb": 3.46,
+      "price": 354.5,
+      "pe": 17.2,
+      "pb": 3.54,
       "roe": 21.2,
       "roe_history": [
         18.6,
@@ -163,10 +163,10 @@
         20.2,
         27.0
       ],
-      "div_yield": 4.34,
+      "div_yield": 4.33,
       "div_years": 26,
       "payout_ratio": 82.3,
-      "eps": 20.66,
+      "eps": 20.65,
       "score": 4,
       "reasons": [
         "負債比合理",
