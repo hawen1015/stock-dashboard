@@ -1,12 +1,12 @@
 {
-  "last_updated": "2026-09-24 15:24",
+  "last_updated": "2026-09-25 15:27",
   "stocks": [
     {
       "code": "2330",
       "name": "台積電",
       "sector": "科技",
       "price": 2475.0,
-      "pe": 28.9,
+      "pe": 29.0,
       "pb": 9.98,
       "roe": 40.0,
       "roe_history": [
@@ -15,10 +15,10 @@
         24.8,
         34.2
       ],
-      "div_yield": 1.12,
+      "div_yield": 1.13,
       "div_years": 23,
       "payout_ratio": 25.7,
-      "eps": 85.5,
+      "eps": 85.39,
       "score": 3,
       "reasons": [
         "負債比合理",
@@ -36,7 +36,7 @@
       "name": "川湖科技",
       "sector": "科技",
       "price": 12350.0,
-      "pe": 68.7,
+      "pe": 69.0,
       "pb": 34.87,
       "roe": 62.8,
       "roe_history": [
@@ -48,7 +48,7 @@
       "div_yield": 0.41,
       "div_years": 19,
       "payout_ratio": 18.0,
-      "eps": 179.66,
+      "eps": 179.08,
       "score": 3,
       "reasons": [
         "負債比合理",
@@ -75,7 +75,7 @@
         12.7,
         8.5
       ],
-      "div_yield": 3.63,
+      "div_yield": 3.65,
       "div_years": 19,
       "payout_ratio": 56.7,
       "eps": 4.06,
@@ -107,7 +107,7 @@
         9.9,
         6.1
       ],
-      "div_yield": 3.5,
+      "div_yield": 3.53,
       "div_years": 24,
       "payout_ratio": 67.8,
       "eps": 2.36,
@@ -136,10 +136,10 @@
         28.0,
         25.5
       ],
-      "div_yield": 4.23,
+      "div_yield": 4.24,
       "div_years": 27,
       "payout_ratio": 81.2,
-      "eps": 11.08,
+      "eps": 11.07,
       "score": 3,
       "reasons": [
         "ROE 連續達標（近期 26.3%）",
@@ -167,20 +167,20 @@
         20.2,
         27.0
       ],
-      "div_yield": 5.34,
+      "div_yield": 5.42,
       "div_years": 26,
       "payout_ratio": 132.6,
-      "eps": 24.14,
+      "eps": 24.11,
       "score": 4,
       "reasons": [
         "負債比合理",
         "ROE 連續達標（近期 18.6%）",
-        "殖利率 5.3%⚠️ 發放率偏高 132.6%",
+        "殖利率 5.4%⚠️ 發放率偏高 132.6%",
         "遠期P/E優於現在"
       ],
       "alerts": [
         "四層指標通過 4/4 層",
-        "殖利率 5.3% 達標"
+        "殖利率 5.4% 達標"
       ],
       "warnings": [
         "⚠️ 發放率 132.6%，注意借錢配息風險"
