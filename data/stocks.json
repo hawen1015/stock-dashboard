@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-22 15:29",
+  "last_updated": "2026-10-23 15:22",
   "stocks": [
     {
       "code": "2330",
@@ -15,7 +15,7 @@
         24.8,
         34.2
       ],
-      "div_yield": 1.16,
+      "div_yield": 1.17,
       "div_years": 23,
       "payout_ratio": 24.6,
       "eps": 97.47,
@@ -45,7 +45,7 @@
         16.5,
         25.9
       ],
-      "div_yield": 0.51,
+      "div_yield": 0.52,
       "div_years": 19,
       "payout_ratio": 18.2,
       "eps": 176.77,
@@ -105,7 +105,7 @@
         9.9,
         6.1
       ],
-      "div_yield": 3.26,
+      "div_yield": 3.17,
       "div_years": 24,
       "payout_ratio": 67.8,
       "eps": 2.36,
@@ -131,7 +131,7 @@
         28.0,
         25.5
       ],
-      "div_yield": 4.01,
+      "div_yield": 3.98,
       "div_years": 27,
       "payout_ratio": 81.4,
       "eps": 11.06,
